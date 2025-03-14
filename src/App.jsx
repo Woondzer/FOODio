@@ -3,6 +3,7 @@ import { useState } from 'react';
 import MealList from './assets/components/MealList';
 import SearchBar from './assets/components/SearchBar'
 import FetchMeal from './assets/components/FetchMeal';
+import limeImage from './assets/lime.png';
 
 function App() {
   const [meals, setMeals] = useState([]);
@@ -11,8 +12,9 @@ function App() {
   return (
     <>
         <div className="navbar flex justify-center bg-green-800">
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white">
-            FOODio!
+          <h1 className="flex items-center gap-5 text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white">
+            FOODio 
+            <img src={limeImage} alt="Lime" className="size-10 sm:size-15 md:size-20 lg:size-25 xl:size-30" />
           </h1>
         </div>
 
