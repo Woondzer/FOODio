@@ -1,8 +1,13 @@
 import './App.css'
+import { useState } from 'react';
 import MealList from './assets/components/MealList';
 import SearchBar from './assets/components/SearchBar'
+import FetchMeal from './assets/components/FetchMeal';
 
 function App() {
+  const [meals, setMeals] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+
   return (
     <>
         <div className="navbar flex justify-center bg-green-800">
@@ -19,13 +24,12 @@ function App() {
           <div className="hero-overlay"></div>
           <div className="hero-content text-neutral-content text-center w-full flex justify-center">
             <div className="w-full flex justify-center">  
-              <p className="mb-5">
-                <SearchBar />
-              </p>
+              <SearchBar onSearch={(query) => setSearchQuery(query || "")} />
             </div>
           </div>
         </div>
-        <MealList />
+        {searchQuery && <FetchMeal searchQuery={searchQuery} onDataLoaded={setMeals} />}
+        <MealList meals={meals} />
     </>
   );
 }
