@@ -1,7 +1,13 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 function SearchBar({ onSearch }) {
     const [query, setQuery] = useState("");
+    const inputRef = useRef(null);
+
+    // gör så att inputfältet är highlightat direkt. bara börja skriva.
+    useEffect(() => {
+        inputRef.current.focus();
+    }, []);
 
     const handleSearch = () => {
         if (query.trim() !== "") {
@@ -47,6 +53,7 @@ function SearchBar({ onSearch }) {
 
             <input
                 type="search"
+                ref={inputRef}
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}

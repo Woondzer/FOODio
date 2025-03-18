@@ -1,13 +1,19 @@
 import './App.css'
 import { useState } from 'react';
-import MealList from './assets/components/MealList';
-import SearchBar from './assets/components/SearchBar'
-import FetchMeal from './assets/components/FetchMeal';
+import MealList from './components/MealList';
+import SearchBar from './components/SearchBar'
+import FetchMeal from './components/FetchMeal';
 import limeImage from './assets/lime.png';
 
 function App() {
   const [meals, setMeals] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchPerformed, setSearchPerformed] = useState(false);
+
+  const handleSearch = (query) => {
+    setSearchQuery(query || "");
+    setSearchPerformed(true);
+  }
 
   return (
     <>
@@ -19,19 +25,19 @@ function App() {
         </div>
 
         <div
-          className="hero min-h-[60vh]"
+          className="hero min-h-[60vh] mx-auto"
           style={{
             backgroundImage: "url(https://images.pexels.com/photos/3184183/pexels-photo-3184183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)",
           }}>
           <div className="hero-overlay"></div>
           <div className="hero-content text-neutral-content text-center w-full flex justify-center">
             <div className="w-full flex justify-center">  
-              <SearchBar onSearch={(query) => setSearchQuery(query || "")} />
+              <SearchBar onSearch={handleSearch} />
             </div>
           </div>
         </div>
         {searchQuery && <FetchMeal searchQuery={searchQuery} onDataLoaded={setMeals} />}
-        <MealList meals={meals} />
+        <MealList meals={meals} searchPerformed={searchPerformed}/>
     </>
   );
 }
