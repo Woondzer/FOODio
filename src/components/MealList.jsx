@@ -1,13 +1,20 @@
+import { Link } from "react-router-dom";
+
 function MealList({ meals, searchPerformed }) {
   return (
     <div className="w-[90%] max-w-[1000px] mx-auto">
-      {/* visar fel meddelande om inte meal hittas */}
+      {/* visar felmeddelande om inte meal hittas */}
       {searchPerformed && meals.length === 0 && (
-        <ul className="list bg-white shadow-md flex justify-center p-4">
-          <li>
-              <img src="src/assets/sadPikachu.png" alt="pikachu" className="w-60 h-75" />
-          </li>
-        </ul>
+        <div className="list bg-green-800 shadow-md flex flex-row justify-center items-end p-6 gap-x-6">
+          <img
+            src="src/assets/sadPikachu.png"
+            alt="pikachu"
+            className="w-60 h-auto"
+          />
+          <h1 className="text-7xl font-bold mb-17 text-white whitespace-nowrap">
+            OH NO...
+          </h1>
+        </div>
       )}
 
       {/* visar lista med meals om de hittas */}
@@ -18,9 +25,9 @@ function MealList({ meals, searchPerformed }) {
           </li>
 
           {meals.map((meal) => (
-            <a
+            <Link
               key={meal.idMeal}
-              href="#"
+              to={`/meal/${meal.idMeal}`}
               className="block border-t border-gray-100 first:border-t-0 hover:bg-green-100"
             >
               <li className="list-row flex items-center">
@@ -40,7 +47,7 @@ function MealList({ meals, searchPerformed }) {
                   </div>
                 </div>
               </li>
-            </a>
+            </Link>
           ))}
         </ul>
       )}

@@ -15,9 +15,9 @@ function FetchMeal({ searchQuery, onDataLoaded }) {
 
        fetchMeals();
         
-    }, [searchQuery]); // ✅ Runs every time `searchQuery` changes
+    }, [searchQuery]); 
 
-    return null; // No UI needed
+    return null;
 }
 
 export default FetchMeal;
