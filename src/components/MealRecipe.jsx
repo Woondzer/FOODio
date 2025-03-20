@@ -25,10 +25,13 @@ function MealRecipe() {
     return <span className="loading loading-spinner text-success"></span>;
   }
 
+  //   loopa igenom ingredienser
   const ingredients = [];
+
   for (let i = 1; i <= 20; i++) {
     const ingredient = meal[`strIngredient${i}`];
     const measure = meal[`strMeasure${i}`];
+
     if (ingredient && ingredient.trim() !== "") {
       ingredients.push({ ingredient, measure });
     }

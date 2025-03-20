@@ -5,13 +5,13 @@ function MealList({ meals, searchPerformed }) {
     <div className="w-[90%] max-w-[1000px] mx-auto">
       {/* visar felmeddelande om inte meal hittas */}
       {searchPerformed && meals.length === 0 && (
-        <div className="list bg-green-800 shadow-md flex flex-row justify-center items-end p-6 gap-x-6">
+        <div className="list bg-white shadow-md flex flex-row justify-center items-end p-6 gap-x-6">
           <img
             src="src/assets/sadPikachu.png"
             alt="pikachu"
             className="w-60 h-auto"
           />
-          <h1 className="text-7xl font-bold mb-17 text-white whitespace-nowrap">
+          <h1 className="text-7xl font-bold mb-17 text-black whitespace-nowrap">
             OH NO...
           </h1>
         </div>
