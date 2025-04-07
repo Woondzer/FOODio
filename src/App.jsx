@@ -6,6 +6,7 @@ import SearchBar from "./components/SearchBar";
 import FetchMeal from "./components/FetchMeal";
 import MealRecipe from "./components/MealRecipe";
 import limeImage from "./assets/lime.png";
+import NotFound from "./components/notFound";
 
 function App() {
   const [meals, setMeals] = useState([]);
@@ -56,6 +57,7 @@ function App() {
           }
         />
         <Route path="/meal/:id" element={<MealRecipe />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

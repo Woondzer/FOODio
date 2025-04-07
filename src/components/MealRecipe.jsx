@@ -22,7 +22,11 @@ function MealRecipe() {
   }, [id]);
 
   if (!meal) {
-    return <span className="loading loading-spinner text-success"></span>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <span className="loading loading-spinner text-success"></span>
+      </div>
+    );
   }
 
   //   loopa igenom ingredienser
