@@ -92,13 +92,15 @@ function MealRecipe() {
 
           {/* instruktioner */}
           <div className="mt-6">
-            <h3 className="text-2xl font-semibold text-green-700">
+            <h3 className="text-2xl font-semibold text-green-700 text-left">
               {" "}
               Instructions:
             </h3>
-            <p className="text-gray-700 leading-relaxed">
-              {meal.strInstructions}
-            </p>
+            {meal.strInstructions.split("\r\n").map((str, idx) => (
+              <p key={idx} className="text-gray-700 leading-relaxed text-left">
+                {str}
+              </p>
+            ))}
           </div>
           {/* youtube film/länk */}
           {meal.strYoutube && (
